@@ -1,15 +1,16 @@
-/* import { useMemo, useState } from "react";
-import { samplePromotions } from "./mocks/sample-promotions"; */
+import { /* useMemo, */ useState } from "react";
+/* import { samplePromotions } from "./mocks/sample-promotions"; */
+import FilterBar from "./components/FilterBar";
 import Header from "./components/Header";
 
 const App = () => {
-/*   const [searchTerm, setSearchTerm] = useState<string>("");
+  /* const [searchTerm, setSearchTerm] = useState<string>(""); */
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [sortBy, setSortBy] = useState<string>("newest");
 
   const categories = ["All", "Electronics", "Fashion", "Home", "Beauty"];
 
-  const filteredAndSortedPromotions = useMemo(() => {
+  /* const filteredAndSortedPromotions = useMemo(() => {
     let filtered = samplePromotions.filter((promotion) => {
       const matchesSearch =
         promotion.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -34,9 +35,9 @@ const App = () => {
       default:
         return filtered;
     }
-  }, [searchTerm, selectedCategory, sortBy]);
+  }, [searchTerm, selectedCategory, sortBy]); */
 
-  const avgDiscount = Math.round(
+/*   const avgDiscount = Math.round(
     samplePromotions.reduce((acc, p) => acc + p.discount, 0) /
       samplePromotions.length
   ); */
@@ -44,8 +45,16 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <Header />
+      <div className="container mx-auto px-4 py-8">
+        <FilterBar
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+        />
+      </div>
     </div>
-
   );
 };
 

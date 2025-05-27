@@ -1,5 +1,6 @@
 import { Tag } from "lucide-react";
 import { samplePromotions } from "../mocks/sample-promotions";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const newProductsCount = samplePromotions.filter((p) => p.isNew).length;
@@ -29,6 +30,7 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <SearchBar />
       </div>
     </header>
   );
