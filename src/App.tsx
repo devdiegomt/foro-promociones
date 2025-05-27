@@ -7,10 +7,10 @@ import PromotionCard from "./components/PromotionCard";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [sortBy, setSortBy] = useState("newest");
 
-  const categories = ["All", "Electronics", "Fashion", "Home", "Beauty"];
+  const categories = ["Todas", "Tecnología", "Moda", "Hogar", "Belleza"];
 
   const filteredAndSortedPromotions = useMemo(() => {
     const filtered = samplePromotions.filter((promotion) => {
@@ -21,7 +21,7 @@ const App = () => {
           .includes(searchTerm.toLowerCase()) ||
         promotion.store.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory =
-        selectedCategory === "All" || promotion.category === selectedCategory;
+        selectedCategory === "Todas" || promotion.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
 
@@ -100,7 +100,7 @@ const App = () => {
         {/* Resultados */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            {searchTerm || selectedCategory !== "All"
+            {searchTerm || selectedCategory !== "Todas"
               ? `Resultados filtrados (${filteredAndSortedPromotions.length})`
               : "Todas las Promociones"}
           </h2>

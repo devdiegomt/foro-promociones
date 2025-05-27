@@ -3,7 +3,7 @@ export type Promotion = {
   title: string;
   description: string;
   originalPrice: number;
-  discountedPrice: number;
+  discountPrice: number;
   discount: number;
   category: string;
   isNew: boolean;
@@ -12,6 +12,7 @@ export type Promotion = {
   createdAt: Date;
   expiresAt: Date;
   store: string;
+  offerUrl?: string;
 };
 
 export interface PromotionCardProps {

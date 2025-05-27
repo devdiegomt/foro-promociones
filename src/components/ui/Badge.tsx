@@ -1,9 +1,10 @@
-const Badge = () => {
-  return (
-    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-      New
-    </span>
-  );
+interface BadgeProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const Badge: React.FC<BadgeProps> = ({ className, children }) => {
+  return <span className={`${className} flex flex-row items-center px-2 border rounded-2xl cursor-default`}>{children}</span>;
 };
 
 export default Badge;
