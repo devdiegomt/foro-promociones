@@ -2,8 +2,17 @@ import { Tag } from "lucide-react";
 import { samplePromotions } from "../mocks/sample-promotions";
 import SearchBar from "./SearchBar";
 
-const Header = () => {
+interface HeaderProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm }) => {
   const newProductsCount = samplePromotions.filter((p) => p.isNew).length;
+  const avgDiscount = Math.round(
+    samplePromotions.reduce((acc, p) => acc + p.discount, 0) /
+      samplePromotions.length
+  );
 
   return (
     <header className="bg-white shadow-lg border-b border-purple-100">
@@ -24,13 +33,19 @@ const Header = () => {
           <div className="flex items-center space-x-6">
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">
-                {newProductsCount}%
+                {newProductsCount}
               </div>
-              <div className="text-sm text-gray-600">Descuento promedio</div>
+              <div className="text-sm text-gray-600">Nuevos Hoy</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-blue-600">
+                {avgDiscount}%
+              </div>
+              <div className="text-sm text-gray-600">Desc. Promedio</div>
             </div>
           </div>
         </div>
-        <SearchBar />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
     </header>
   );

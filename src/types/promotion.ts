@@ -9,7 +9,11 @@ export type Promotion = {
   isNew: boolean;
   popularity: number;
   imageUrl: string;
-  createdAt: string;
-  expiresAt: string;
+  createdAt: Date;
+  expiresAt: Date;
   store: string;
 };
+
+export interface PromotionCardProps {
+  promotion: Promotion;
+}
